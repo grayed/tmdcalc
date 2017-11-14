@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // grv94.cpp
 // Last modified 29.08.2017 by Artem Lipatov
 

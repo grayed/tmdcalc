@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // utils.cpp
 // Last modified 07.11.2017 by Artem Lipatov
 

@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include <cmath>
 #include "../lib/common/utils.h"
 #include "../lib/common/HEPVector4.h"

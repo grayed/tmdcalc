@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

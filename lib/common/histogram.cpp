@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // histogram.cpp
 // Last modified 10.11.2017 by Artem Lipatov
 

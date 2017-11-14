@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include "open-beauty-OutputDialog.h"
 #include "ui_open-beauty-OutputDialog.h"
 

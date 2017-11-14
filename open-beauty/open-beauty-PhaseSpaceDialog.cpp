@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include "open-beauty-PhaseSpaceDialog.h"
 #include "ui_open-beauty-PhaseSpaceDialog.h"
 

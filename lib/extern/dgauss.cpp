@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // Unit name: dgauss.cpp
 // Last modified: 28.08.2013
 // Description:

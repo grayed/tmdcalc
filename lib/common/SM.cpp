@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // SM.cpp
 // Last modified 12.10.2017 by Artem Lipatov
 

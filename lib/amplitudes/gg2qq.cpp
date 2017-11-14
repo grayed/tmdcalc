@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include <cmath>
 #include "../common/SM.h"
 #include "../common/utils.h"

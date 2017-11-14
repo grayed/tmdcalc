@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // HEPVector4.cpp
 // Last modified 14.09.2017 by Artem Lipatov
 

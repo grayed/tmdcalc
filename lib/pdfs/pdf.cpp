@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 // pdf.cpp
 // Last modified 04.09.2017 by Artem Lipatov
 

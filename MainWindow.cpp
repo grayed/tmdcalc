@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 

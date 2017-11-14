@@ -1,3 +1,7 @@
+/*
+ * (c) Artem Lipatov, 2017
+ */
+
 #include <cmath>
 #include "../lib/common/SM.h"
 #include "../lib/common/frames.h"
