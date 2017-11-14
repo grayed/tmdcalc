@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpenBeautyOutputDialog</class>
+ <widget class="QDialog" name="OpenBeautyOutputDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>623</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Open beauty output</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="GridLayout">
+     <item row="0" column="1">
+      <widget class="QGroupBox" name="RapidityGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>b-&amp;quark rapidity</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QGridLayout" name="RapidityGridLayout">
+          <item row="1" column="1">
+           <widget class="QLabel" name="RapidityLabel2">
+            <property name="text">
+             <string>to</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="RapidityLabel1">
+            <property name="text">
+             <string>from</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="RapidityLineEdit2"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="RapidityLabel3">
+            <property name="text">
+             <string>bins</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="RapidityLineEdit1"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QSpinBox" name="RapiditySpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>200</number>
+            </property>
+            <property name="value">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="RapidityUpdateButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>update</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="4">
+           <widget class="QTableView" name="RapidityTableView"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QDialogButtonBox" name="ButtonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="TransverseMomentumGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>&amp;b-quark transverse momentum [GeV]</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QGridLayout" name="TransverseMomentumGridLayout">
+          <item row="0" column="0" colspan="4">
+           <widget class="QTableView" name="TransverseMomentumTableView"/>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="TransverseMomentumUpdateButton">
+            <property name="text">
+             <string>update</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="TransverseMomentumLineEdit1"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="TransverseMomentumLabel3">
+            <property name="text">
+             <string>bins</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="TransverseMomentumLabel1">
+            <property name="text">
+             <string>from</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="TransverseMomentumLabel2">
+            <property name="text">
+             <string>to</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QSpinBox" name="TransverseMomentumSpinBox">
+            <property name="value">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="TransverseMomentumLineEdit2"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="0" rowspan="2">
+      <widget class="QGroupBox" name="InvariantMassGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>bb &amp;invariant mass [GeV]</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <layout class="QGridLayout" name="InvariantMassGridLayout">
+          <item row="1" column="0">
+           <widget class="QLabel" name="InvariantMassLabel1">
+            <property name="text">
+             <string>from</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="InvariantMassLabel2">
+            <property name="text">
+             <string> to</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="InvariantMassLabel3">
+            <property name="text">
+             <string>bins</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="InvariantMassLineEdit2"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="InvariantMassLineEdit1"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QSpinBox" name="InvariantMassSpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>200</number>
+            </property>
+            <property name="value">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="InvariantMassUpdateButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>update</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="4">
+           <widget class="QTableView" name="InvariantMassTableView"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="1" rowspan="2">
+      <widget class="QGroupBox" name="AzimuthalAngleGroupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>bb &amp;azimuthal angle difference [rad]</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QGridLayout" name="AzimuthalAngleGridLayout">
+          <item row="1" column="2">
+           <widget class="QLabel" name="AzimuthalAngleLabel2">
+            <property name="text">
+             <string>to</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="AzimuthalAngleLineEdit1"/>
+          </item>
+          <item row="2" column="3">
+           <widget class="QSpinBox" name="AzimuthalAngleSpinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>200</number>
+            </property>
+            <property name="value">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="AzimuthalAngleLabel3">
+            <property name="text">
+             <string>bins</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="AzimuthalAngleLabel1">
+            <property name="text">
+             <string>from</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="AzimuthalAngleLineEdit2"/>
+          </item>
+          <item row="2" column="4">
+           <widget class="QPushButton" name="AzimuthalAngleUpdateButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>update</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="5">
+           <widget class="QTableView" name="AzimuthalAngleTableView"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QCheckBox" name="LHAOutputCheckBox">
+       <property name="text">
+        <string>generate Les Houches Accord file</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>OpenBeautyOutputDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>472</x>
+     <y>505</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>OpenBeautyOutputDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>472</x>
+     <y>505</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
