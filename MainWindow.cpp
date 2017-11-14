@@ -2,6 +2,7 @@
  * (c) Artem Lipatov, 2017
  */
 
+#include <cmath>
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
@@ -23,6 +24,9 @@ extern "C"
 #include "lib/common/SM.h"
 #include "lib/common/utils.h"
 #include "lib/tmdpdfs/tmdpdf.h"
+
+using namespace std;
+
 
 tmdpdf A0;
 extern double calcgg2bb(double x[], double wgt);
