@@ -24,9 +24,6 @@ public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
-public slots:
-  void onIntegrationStatusChanged(unsigned int status);
-
 private slots:
   void onTaskListWidgetClicked(const QModelIndex &index);
   void onFactorizationComboBoxCurrentIndexChanged(int index);
