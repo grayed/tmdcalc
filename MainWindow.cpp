@@ -25,12 +25,69 @@ extern "C"
 #include "lib/common/utils.h"
 #include "lib/tmdpdfs/tmdpdf.h"
 
-using namespace std;
-
-
 tmdpdf A0;
 extern double calcgg2bb(double x[], double wgt);
 extern void saveOpenBeautyOutput(void);
+
+using namespace std;
+
+
+//class VegasRunner : public QThread {
+class VegasRunner : public QObject {
+  double *regn;
+  int ndim;
+  double (*fxn)(double [], double);
+  int init;
+  unsigned long ncall;
+  int itmx;
+  double *tgral;
+  double *sd;
+  double *chi2a;
+  void(*callback)(unsigned int, void *);
+  void *pointer;
+
+  // QRunnable interface
+public:
+  VegasRunner(double regn[], int ndim, double (*fxn)(double [], double), int init,
+              unsigned long ncall, int itmx, double *tgral, double *sd, double *chi2a,
+              QObject *parent = NULL)
+    : QObject(parent)
+    , regn(regn)
+    , ndim(ndim)
+    , fxn(fxn)
+    , init(init)
+    , ncall(ncall)
+    , itmx(itmx)
+    , tgral(tgral)
+    , sd(sd)
+    , chi2a(chi2a)
+  {
+
+  }
+
+public slots:
+  void run() {
+    vegas(regn, ndim, calcgg2bb, init, calls, itmx, tgral, sd, chi2a,
+          updateIntegrationStatus, this);
+  }
+
+  void stop() {
+    // TODO: добавить в vegas проверку флага (в виде переменной типа volatile int или volatile bool)
+    // и тогда в этой функции его взводить.
+  }
+
+private:
+  // callback-функция, периодически вызываемая из vegas()
+  static void updateIntegrationStatus(unsigned int status, void *pointer)
+  {
+    VegasRunner *vr = (VegasRunner*)pointer;
+    emit vr->progress(status);
+  }
+
+signals:
+  void progress(int param);
+};
+
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -46,8 +103,6 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->PhaseSpaceSetupButton, SIGNAL(clicked()), this, SLOT(onPhaseSpaceSetupButtonClicked()));
   connect(ui->OutputSetupButton, SIGNAL(clicked()), this, SLOT(onOutputSetupButtonClicked()));
   connect(ui->StartButton, SIGNAL(clicked()), this, SLOT(onStartButtonClicked()));
-
-  connect(VegasRunner, SIGNAL(progress(int), this, SLOT(onProgress(int)));
 
   assist();
   setControlStatus();
@@ -302,68 +357,11 @@ void MainWindow::onOutputSetupButtonClicked()
   if ( Dialog.exec() == QDialog::Accepted )
     Dialog.setToStock();
 }
-/*
-static void updateIntegrationStatus(unsigned int status, void *pointer)
-{
-  MainWindow *w = (MainWindow*)pointer;
-  w->onIntegrationStatusChanged(100*status/itmx);
-}
-
-void MainWindow::onIntegrationStatusChanged(unsigned int status)
-{
-  ui->ProgressBar->setValue(status);
-}
-
-*/
 
 void MainWindow::onProgress(int param)
 {
   ui->ProgressBar->setValue(param);
 }
-
-//class VegasRunner : public QThread {
-class VegasRunner : public QObject {
-  double *regn;
-  int ndim;
-  double (*fxn)(double [], double);
-  int init;
-  unsigned long ncall;
-  int itmx;
-  double *tgral;
-  double *sd;
-  double *chi2a;
-  void(*callback)(unsigned int, void *);
-  void *pointer;
-
-  // QRunnable interface
-public:
-  VegasRunner(double regn[], int ndim, double (*fxn)(double [], double), int init, unsigned long ncall,
-              int itmx, double *tgral, double *sd, double *chi2a,
-              void(*callback)(unsigned int, void *), void *pointer, QObject *parent = NULL)
-    : QThread(parent)
-    , regn(regn)
-    , ndim(ndim)
-    , fxn(fxn)
-    , init(init)
-    , ncall(ncall)
-    , itmx(itmx)
-    , tgral(tgral)
-    , sd(sd)
-    , chi2a(chi2a)
-    , callback(callback)
-    , pointer(pointer)
-  {
-
-  }
-
-public slots:
-  void run() {
-    vegas(regn, ndim, calcgg2bb, init, calls, itmx, tgral, sd, chi2a, callback, pointer);
-  }
-
-signals:
-  void progress(int param);
-};
 
 void MainWindow::onStartButtonClicked()
 {
@@ -400,7 +398,7 @@ void MainWindow::onStartButtonClicked()
 
   ui->LogTextBrowser->append("VEGAS is adjusting integration grid...");
 
-  vegas(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a,updateIntegrationStatus,this);
+//   vegas(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a, VegasRunner::updateIntegrationStatus,this);
 
   ui->LogTextBrowser->append("finished");
 
@@ -410,10 +408,12 @@ void MainWindow::onStartButtonClicked()
 
   ui->LogTextBrowser->append("Starting VEGAS integration...");
 
-//  vegasThread = new VegasThread(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a,updateIntegrationStatus,this, this);
-//  vegasThread->start();
-    VegasRunner *vegasThread = new VegasRunner(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a,updateIntegrationStatus,this, this);
-    vegasThread->start();
+  VegasRunner *vr = new VegasRunner(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a);
+  connect(vr, SIGNAL(progress(int)), this, SLOT(onProgress(int)));
+  vegasThread = new QThread(this);
+  connect(vegasThread, SIGNAL(started()), vr, SLOT(start()));
+  connect(vr, SIGNAL(stopped()), vegasThread, SLOT(quit()));    // CHECKME: is quit() approirate?
+  vegasThread->start();
 
   ui->LogTextBrowser->append("finished");
   saveOpenBeautyOutput();
