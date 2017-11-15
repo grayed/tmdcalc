@@ -109,8 +109,8 @@ OpenBeautyPhaseSpaceDialog::OpenBeautyPhaseSpaceDialog(QWidget *parent) :
       PhaseSpaceModel->item(i,j)->setTextAlignment(Qt::AlignCenter);
 
   ui->TableView->setModel(PhaseSpaceModel);
-  ui->TableView->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-  ui->TableView->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+  ui->TableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->TableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 OpenBeautyPhaseSpaceDialog::~OpenBeautyPhaseSpaceDialog()

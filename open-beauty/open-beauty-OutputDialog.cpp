@@ -127,8 +127,8 @@ void OpenBeautyOutputDialog::showTransverseMomentumTable(void)
       TransverseMomentumModel->item(i,j)->setTextAlignment(Qt::AlignCenter);
 
   ui->TransverseMomentumTableView->setModel(TransverseMomentumModel);
-  ui->TransverseMomentumTableView->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-  ui->TransverseMomentumTableView->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+  ui->TransverseMomentumTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->TransverseMomentumTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   ui->TransverseMomentumLineEdit1->setText(QString::number(hbTransverseMomentum.entry[0].lowerborder));
   ui->TransverseMomentumLineEdit2->setText(QString::number(hbTransverseMomentum.entry[hbTransverseMomentum.size() - 1].upperborder));
@@ -163,8 +163,8 @@ void OpenBeautyOutputDialog::showRapidityTable(void)
       RapidityModel->item(i,j)->setTextAlignment(Qt::AlignCenter);
 
   ui->RapidityTableView->setModel(RapidityModel);
-  ui->RapidityTableView->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-  ui->RapidityTableView->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+  ui->RapidityTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->RapidityTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   ui->RapidityLineEdit1->setText(QString::number(hbRapidity.entry[0].lowerborder));
   ui->RapidityLineEdit2->setText(QString::number(hbRapidity.entry[hbRapidity.size() - 1].upperborder));
@@ -199,8 +199,8 @@ void OpenBeautyOutputDialog::showInvariantMassTable(void)
       InvariantMassModel->item(i,j)->setTextAlignment(Qt::AlignCenter);
 
   ui->InvariantMassTableView->setModel(InvariantMassModel);
-  ui->InvariantMassTableView->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-  ui->InvariantMassTableView->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+  ui->InvariantMassTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->InvariantMassTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   ui->InvariantMassLineEdit1->setText(QString::number(hbbInvariantMass.entry[0].lowerborder));
   ui->InvariantMassLineEdit2->setText(QString::number(hbbInvariantMass.entry[hbbInvariantMass.size() - 1].upperborder));
@@ -235,8 +235,8 @@ void OpenBeautyOutputDialog::showAzimuthalAngleTable(void)
       AzimuthalAngleModel->item(i,j)->setTextAlignment(Qt::AlignCenter);
 
   ui->AzimuthalAngleTableView->setModel(AzimuthalAngleModel);
-  ui->AzimuthalAngleTableView->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-  ui->AzimuthalAngleTableView->verticalHeader()->setResizeMode(QHeaderView::Stretch);
+  ui->AzimuthalAngleTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+  ui->AzimuthalAngleTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
   ui->AzimuthalAngleLineEdit1->setText(QString::number(hbbAzimuthalAngle.entry[0].lowerborder));
   ui->AzimuthalAngleLineEdit2->setText(QString::number(hbbAzimuthalAngle.entry[hbbAzimuthalAngle.size() - 1].upperborder));
