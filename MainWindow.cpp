@@ -362,7 +362,7 @@ void MainWindow::onStartButtonClicked()
   connect(vr, SIGNAL(progress(int)), this, SLOT(onProgress(int)));
   vegasThread = new QThread(this);
   connect(vegasThread, SIGNAL(started()), vr, SLOT(run()));
-  connect(vr, SIGNAL(stopped()), vegasThread, SLOT(quit()));    // CHECKME: is quit() approirate?
+  connect(vr, SIGNAL(stopped()), vegasThread, SLOT(quit()));
   vegasThread->start();
 
   ui->LogTextBrowser->append("finished");
