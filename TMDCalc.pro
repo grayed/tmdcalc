@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         MainWindow.cpp \
+        VegasRunner.cpp \
     gui/PDFsDialog.cpp \
     lib/common/SM.cpp \
     lib/common/utils.cpp \
@@ -46,6 +47,7 @@ SOURCES += main.cpp\
     lib/amplitudes/gg2qq.cpp
 
 HEADERS  += MainWindow.h \
+    VegasRunner.h \
     gui/PDFsDialog.h \
     lib/common/SM.h \
     lib/common/utils.h \

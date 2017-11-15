@@ -18,11 +18,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-extern "C"
-{
-  #include "lib/extern/vegas.h"
-}
-
 #include <QString>
 #include <QDebug>
 #include <QRunnable>
@@ -41,64 +36,9 @@ tmdpdf A0;
 extern double calcgg2bb(double x[], double wgt);
 extern void saveOpenBeautyOutput(void);
 
+#include "VegasRunner.h"
+
 using namespace std;
-
-
-//class VegasRunner : public QThread {
-class VegasRunner : public QObject {
-  double *regn;
-  int ndim;
-  double (*fxn)(double [], double);
-  int init;
-  unsigned long ncall;
-  int itmx;
-  double *tgral;
-  double *sd;
-  double *chi2a;
-  void(*callback)(unsigned int, void *);
-  void *pointer;
-
-  // QRunnable interface
-public:
-  VegasRunner(double regn[], int ndim, double (*fxn)(double [], double), int init,
-              unsigned long ncall, int itmx, double *tgral, double *sd, double *chi2a,
-              QObject *parent = NULL)
-    : QObject(parent)
-    , regn(regn)
-    , ndim(ndim)
-    , fxn(fxn)
-    , init(init)
-    , ncall(ncall)
-    , itmx(itmx)
-    , tgral(tgral)
-    , sd(sd)
-    , chi2a(chi2a)
-  {
-
-  }
-
-public slots:
-  void run() {
-    vegas(regn, ndim, calcgg2bb, init, calls, itmx, tgral, sd, chi2a,
-          updateIntegrationStatus, this);
-  }
-
-  void stop() {
-    // TODO: добавить в vegas проверку флага (в виде переменной типа volatile int или volatile bool)
-    // и тогда в этой функции его взводить.
-  }
-
-private:
-  // callback-функция, периодически вызываемая из vegas()
-  static void updateIntegrationStatus(unsigned int status, void *pointer)
-  {
-    VegasRunner *vr = (VegasRunner*)pointer;
-    emit vr->progress(status);
-  }
-
-signals:
-  void progress(int param);
-};
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -410,8 +350,6 @@ void MainWindow::onStartButtonClicked()
 
   ui->LogTextBrowser->append("VEGAS is adjusting integration grid...");
 
-//   vegas(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a, VegasRunner::updateIntegrationStatus,this);
-
   ui->LogTextBrowser->append("finished");
 
   init = 1;
@@ -423,7 +361,7 @@ void MainWindow::onStartButtonClicked()
   VegasRunner *vr = new VegasRunner(regn,ndim,calcgg2bb,init,calls,itmx,&tgral,&sd,&chi2a);
   connect(vr, SIGNAL(progress(int)), this, SLOT(onProgress(int)));
   vegasThread = new QThread(this);
-  connect(vegasThread, SIGNAL(started()), vr, SLOT(start()));
+  connect(vegasThread, SIGNAL(started()), vr, SLOT(run()));
   connect(vr, SIGNAL(stopped()), vegasThread, SLOT(quit()));    // CHECKME: is quit() approirate?
   vegasThread->start();
 
